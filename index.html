@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>inCruises - Viaggia Risparmiando fino al 50%</title>
+    <title>inCruises - Viaggio Risparmiando fino al 50%</title>
     <style>
         * {
             margin: 0;
@@ -18,7 +18,7 @@
         }
 
         .hero {
-            background: linear-gradient(135deg, #0066cc 0%, #004d99 100%);
+            background: linear-gradient(135deg, #0066cc 0%, #00d4ff 100%);
             color: white;
             padding: 60px 20px;
             text-align: center;
@@ -27,305 +27,363 @@
         .hero h1 {
             font-size: 2.5em;
             margin-bottom: 20px;
-            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
         }
 
         .hero p {
-            font-size: 1.3em;
+            font-size: 1.2em;
             margin-bottom: 30px;
         }
 
-        .benefits {
-            background: #f8f9fa;
-            padding: 50px 20px;
-            text-align: center;
-        }
-
-        .benefits h2 {
-            color: #0066cc;
-            margin-bottom: 40px;
-            font-size: 2em;
-        }
-
-        .benefits-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 30px;
+        .container {
             max-width: 1200px;
             margin: 0 auto;
+            padding: 20px;
         }
 
-        .benefit-card {
-            background: white;
-            padding: 30px;
-            border-radius: 10px;
-            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+        .offers-section {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 30px;
+            margin: 60px 0;
         }
 
-        .benefit-card h3 {
-            color: #0066cc;
-            margin-bottom: 15px;
-            font-size: 1.5em;
-        }
-
-        .form-section {
-            max-width: 800px;
-            margin: 50px auto;
-            padding: 40px 20px;
-        }
-
-        .form-section h2 {
-            color: #0066cc;
+        .offer-card {
+            border: 3px solid #ddd;
+            border-radius: 15px;
+            padding: 40px;
             text-align: center;
-            margin-bottom: 30px;
+            transition: transform 0.3s, box-shadow 0.3s;
+            background: #f9f9f9;
+        }
+
+        .offer-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 30px rgba(0,0,0,0.15);
+            border-color: #0066cc;
+        }
+
+        .offer-card.travel {
+            border-color: #ff9900;
+        }
+
+        .offer-card.travel h2 {
+            color: #ff9900;
+        }
+
+        .offer-card.business {
+            border-color: #28a745;
+        }
+
+        .offer-card.business h2 {
+            color: #28a745;
+        }
+
+        .offer-card h2 {
             font-size: 2em;
+            margin-bottom: 15px;
         }
 
-        .form-intro {
-            text-align: center;
-            margin-bottom: 30px;
+        .offer-card .icon {
+            font-size: 3em;
+            margin-bottom: 15px;
+        }
+
+        .offer-card .subtitle {
             font-size: 1.1em;
+            font-weight: bold;
+            margin-bottom: 20px;
             color: #555;
         }
 
-        form {
+        .offer-card ul {
+            list-style: none;
+            margin: 20px 0;
+            text-align: left;
+        }
+
+        .offer-card li {
+            padding: 10px;
             background: white;
-            padding: 40px;
+            margin: 8px 0;
+            border-radius: 5px;
+            border-left: 4px solid;
+        }
+
+        .offer-card.travel li {
+            border-left-color: #ff9900;
+        }
+
+        .offer-card.business li {
+            border-left-color: #28a745;
+        }
+
+        .price {
+            font-size: 1.8em;
+            font-weight: bold;
+            margin: 20px 0;
+            color: #0066cc;
+        }
+
+        .cta-button {
+            background: linear-gradient(135deg, #0066cc 0%, #00d4ff 100%);
+            color: white;
+            padding: 15px 40px;
+            border: none;
+            border-radius: 50px;
+            font-size: 1.1em;
+            cursor: pointer;
+            text-decoration: none;
+            display: inline-block;
+            margin-top: 20px;
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+
+        .cta-button:hover {
+            transform: scale(1.05);
+            box-shadow: 0 8px 20px rgba(0, 102, 204, 0.3);
+        }
+
+        .form-section {
+            background: #f0f0f0;
+            padding: 50px 20px;
+            margin-top: 60px;
+            border-radius: 15px;
+        }
+
+        .form-section h2 {
+            text-align: center;
+            font-size: 2em;
+            margin-bottom: 30px;
+            color: #333;
+        }
+
+        .form-container {
+            max-width: 600px;
+            margin: 0 auto;
+            background: white;
+            padding: 30px;
             border-radius: 10px;
-            box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
         }
 
         .form-group {
-            margin-bottom: 25px;
+            margin-bottom: 20px;
         }
 
-        label {
+        .form-group label {
             display: block;
             margin-bottom: 8px;
+            font-weight: bold;
             color: #333;
-            font-weight: 600;
         }
 
-        input[type="text"],
-        input[type="email"],
-        input[type="tel"],
-        select,
-        textarea {
+        .form-group input,
+        .form-group select,
+        .form-group textarea {
             width: 100%;
             padding: 12px;
             border: 2px solid #ddd;
             border-radius: 5px;
-            font-size: 16px;
+            font-size: 1em;
+            font-family: inherit;
             transition: border-color 0.3s;
         }
 
-        input:focus,
-        select:focus,
-        textarea:focus {
+        .form-group input:focus,
+        .form-group select:focus,
+        .form-group textarea:focus {
             outline: none;
             border-color: #0066cc;
         }
 
-        textarea {
+        .form-group textarea {
             resize: vertical;
             min-height: 100px;
         }
 
-        .radio-group {
-            display: flex;
-            gap: 20px;
-            flex-wrap: wrap;
-        }
-
-        .radio-option {
-            display: flex;
-            align-items: center;
-            gap: 8px;
-        }
-
-        .radio-option input[type="radio"] {
-            width: auto;
-        }
-
-        button[type="submit"] {
-            width: 100%;
-            padding: 15px;
-            background: linear-gradient(135deg, #0066cc 0%, #004d99 100%);
+        .submit-button {
+            background: linear-gradient(135deg, #0066cc 0%, #00d4ff 100%);
             color: white;
+            padding: 15px 30px;
             border: none;
-            border-radius: 5px;
-            font-size: 1.2em;
-            font-weight: bold;
+            border-radius: 50px;
+            font-size: 1.1em;
             cursor: pointer;
-            transition: transform 0.2s;
+            width: 100%;
+            transition: transform 0.3s, box-shadow 0.3s;
         }
 
-        button[type="submit"]:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 6px 12px rgba(0,0,0,0.2);
+        .submit-button:hover {
+            transform: scale(1.02);
+            box-shadow: 0 8px 20px rgba(0, 102, 204, 0.3);
         }
 
-        .required {
-            color: red;
-        }
-
-        footer {
-            background: #333;
-            color: white;
+        .success-message {
+            display: none;
+            background: #d4edda;
+            color: #155724;
+            padding: 15px;
+            border-radius: 5px;
+            margin-bottom: 20px;
             text-align: center;
+        }
+
+        .faq-section {
+            background: #f0f8ff;
+            padding: 40px 20px;
+            margin-top: 40px;
+            border-radius: 15px;
+        }
+
+        .faq-item {
+            background: white;
+            margin: 15px 0;
             padding: 20px;
-            margin-top: 50px;
+            border-radius: 10px;
+            border-left: 5px solid #0066cc;
+        }
+
+        .faq-item h4 {
+            color: #0066cc;
+            margin-bottom: 10px;
         }
 
         @media (max-width: 768px) {
+            .offers-section {
+                grid-template-columns: 1fr;
+            }
+
             .hero h1 {
                 font-size: 1.8em;
-            }
-
-            .hero p {
-                font-size: 1.1em;
-            }
-
-            form {
-                padding: 25px;
             }
         }
     </style>
 </head>
 <body>
     <div class="hero">
-        <h1>🚢 Scopri il Mondo delle Crociere con inCruises</h1>
-        <p>Viaggia Risparmiando fino al 50% con la Membership Club Esclusiva</p>
-        <p>✓ Sconto immediato del 17% | ✓ Accumula crediti premio | ✓ Migliaia di destinazioni</p>
+        <h1>🚢 inCruises - Il Club di Viaggio Più Conveniente al Mondo</h1>
+        <p>Scopri Due Incredibili Opportunità: Viaggia o Guadagna!</p>
     </div>
 
-    <div class="benefits">
-        <h2>Perché Scegliere inCruises?</h2>
-        <div class="benefits-grid">
-            <div class="benefit-card">
-                <h3>💰 Risparmio Garantito</h3>
-                <p>Sconto immediato del 17% su crociere, hotel e resort. Riduci i prezzi fino al 50% con i Crediti Premio!</p>
+    <div class="container">
+        <h2 style="text-align: center; font-size: 2.2em; margin: 40px 0; color: #333;">Scegli la Tua Opportunità con inCruises</h2>
+        
+        <div class="offers-section">
+            <!-- OFFERTA 1: MEMBERSHIP CLUB -->
+            <div class="offer-card travel">
+                <div class="icon">✈️</div>
+                <h2>MEMBERSHIP CLUB</h2>
+                <p class="subtitle">Per Chi Vuole Viaggiare</p>
+                
+                <p><strong>Accedi al Club di Viaggio più Conveniente al Mondo</strong></p>
+                
+                <ul>
+                    <li>✓ Sconto INsider del 17% su crociere, hotel e resort</li>
+                    <li>✓ Reward Points che si raddoppiano mensilmente</li>
+                    <li>✓ 21,000+ opzioni di crociere disponibili</li>
+                    <li>✓ 430,000+ hotel e resort con sconti esclusivi</li>
+                    <li>✓ 300,000+ tour e attività in tutto il mondo</li>
+                    <li>✓ Punti Reward che NON SCADONO mai</li>
+                    <li>✓ Risparmia fino al 50% con i Reward Points</li>
+                </ul>
+
+                <div class="price">A partire da €50</div>
+                <p style="font-size: 0.9em; color: #666; margin: 10px 0;">
+                    <strong>Tre Piani Disponibili:</strong><br>
+                    <strong style="color: #ff9900;">Starter:</strong> €50 attivazione<br>
+                    <strong style="color: #ff9900;">Classic:</strong> €200 attivazione + €100/mese<br>
+                    <strong style="color: #ff9900;">Premium:</strong> €500 attivazione + €250/mese
+                </p>
+
+                <a href="https://danielen_it.incruises.com/signup" class="cta-button" target="_blank">
+                    ✈️ Iscriviti come Membro Ora
+                </a>
             </div>
-            <div class="benefit-card">
-                <h3>🎁 Crediti Premio</h3>
-                <p>Ogni pagamento mensile viene raddoppiato in crediti. $100 mensili = 200 punti credito!</p>
-            </div>
-            <div class="benefit-card">
-                <h3>🌍 Destinazioni Illimitate</h3>
-                <p>Accesso a migliaia di crociere, hotel e resort in oltre 190 paesi del mondo.</p>
-            </div>
-            <div class="benefit-card">
-                <h3>⚡ Flessibilità Totale</h3>
-                <p>Tre piani membership (Starter, Classic, Premium) a partire da $50 al mese.</p>
+
+            <!-- OFFERTA 2: PARTNERSHIP PROGRAM -->
+            <div class="offer-card business">
+                <div class="icon">💼</div>
+                <h2>PARTNERSHIP PROGRAM</h2>
+                <p class="subtitle">Per Chi Vuole Guadagnare</p>
+                
+                <p><strong>Trasforma la Tua Passione per i Viaggi in Reddito Ricorrente</strong></p>
+                
+                <ul>
+                    <li>✓ Reddito ricorrente illimitato da commissioni</li>
+                    <li>✓ Commissioni su ogni vendita di memberships</li>
+                    <li>✓ Bonus di leadership per i tuoi team</li>
+                    <li>✓ Programma referral globale illimitato</li>
+                    <li>✓ Membership gratuita o a prezzo ridotto</li>
+                    <li>✓ Supporto dedicato 24/7 e materiali marketing</li>
+                    <li>✓ Lavora da casa, senza limiti geografici</li>
+                </ul>
+
+                <div class="price">A partire da €95</div>
+                <p style="font-size: 0.9em; color: #666; margin: 10px 0;">
+                    <strong>Due Piani Disponibili:</strong><br>
+                    <strong style="color: #28a745;">Partner:</strong> €95 attivazione (rinnovo biennale)<br>
+                    <strong style="color: #28a745;">Partner Member:</strong> €295 attivazione (con benefits extra)
+                </p>
+
+                <a href="https://danielen_it.incruises.com/signup" class="cta-button" target="_blank">
+                    💼 Diventa Partner Ora
+                </a>
             </div>
         </div>
-    </div>
 
-    <div class="form-section">
-        <h2>Richiedi Maggiori Informazioni</h2>
-        <p class="form-intro">Compila il form per ricevere una consulenza gratuita personalizzata e scoprire come viaggiare risparmiando!</p>
-
-        <form id="contactForm" action="https://script.google.com/macros/s/AKfycbzILHczH89MZY4ZQkk3NJBZBTfnST0hrj3ORMWT5uFNly_a9Py-SQMZaGmNUkTeqmnF/dev" method="POST" novalidate>
-            <div class="form-group">
-                <label for="nome">Nome <span class="required">*</span></label>
-                <input type="text" id="nome" name="nome" required>
-            </div>
-
-            <div class="form-group">
-                <label for="cognome">Cognome <span class="required">*</span></label>
-                <input type="text" id="cognome" name="cognome" required>
-            </div>
-
-            <div class="form-group">
-                <label for="email">Email <span class="required">*</span></label>
-                <input type="email" id="email" name="email" required>
-            </div>
-
-            <div class="form-group">
-                <label for="telefono">Telefono <span class="required">*</span></label>
-                <input type="tel" id="telefono" name="telefono" required>
-            </div>
-
-            <div class="form-group">
-                <label>Hai mai fatto una crociera? <span class="required">*</span></label>
-                <div class="radio-group">
-                    <div class="radio-option">
-                        <input type="radio" id="crociera_si" name="hai_fatto_crociera" value="Sì" required>
-                        <label for="crociera_si">Sì</label>
-                    </div>
-                    <div class="radio-option">
-                        <input type="radio" id="crociera_no" name="hai_fatto_crociera" value="No" required>
-                        <label for="crociera_no">No</label>
-                    </div>
+        <!-- FORM SECTION -->
+        <div class="form-section">
+            <h2>📋 Richiedi Maggiori Informazioni</h2>
+            <div class="form-container">
+                <div class="success-message" id="successMessage">
+                    ✓ Grazie! I tuoi dati sono stati registrati con successo. Ti contatteremo presto!
                 </div>
-            </div>
+                
+                <form id="contactForm" onsubmit="handleSubmit(event)">
+                    <div class="form-group">
+                        <label for="name">Nome e Cognome *</label>
+                        <input type="text" id="name" name="name" placeholder="Es: Mario Rossi" required>
+                    </div>
 
-            <div class="form-group">
-                <label for="frequenza_viaggi">Con quale frequenza vorresti viaggiare in crociera? <span class="required">*</span></label>
-                <select id="frequenza_viaggi" name="frequenza_viaggi" required>
-                    <option value="">-- Seleziona --</option>
-                    <option value="1-2 volte all'anno">1-2 volte all'anno</option>
-                    <option value="3-4 volte all'anno">3-4 volte all'anno</option>
-                    <option value="Più di 4 volte all'anno">Più di 4 volte all'anno</option>
-                    <option value="Non so ancora">Non so ancora</option>
-                </select>
-            </div>
+                    <div class="form-group">
+                        <label for="email">Email *</label>
+                        <input type="email" id="email" name="email" placeholder="tua.email@example.com" required>
+                    </div>
 
-            <div class="form-group">
-                <label for="destinazioni">Quali destinazioni ti interessano di più? <span class="required">*</span></label>
-                <select id="destinazioni" name="destinazioni" required>
-                    <option value="">-- Seleziona --</option>
-                    <option value="Mediterraneo">Mediterraneo</option>
-                    <option value="Caraibi">Caraibi</option>
-                    <option value="Nord Europa / Fiordi">Nord Europa / Fiordi</option>
-                    <option value="Medio Oriente">Medio Oriente</option>
-                    <option value="Asia">Asia</option>
-                    <option value="Americhe">Americhe</option>
-                    <option value="Crociere Transatlantiche">Crociere Transatlantiche</option>
-                    <option value="Tutte le destinazioni">Tutte le destinazioni</option>
-                </select>
-            </div>
+                    <div class="form-group">
+                        <label for="phone">Telefono *</label>
+                        <input type="tel" id="phone" name="phone" placeholder="+39 3XX XXX XXXX" required>
+                    </div>
 
-            <div class="form-group">
-                <label for="budget">Qual è il tuo budget approssimativo per una crociera? <span class="required">*</span></label>
-                <select id="budget" name="budget" required>
-                    <option value="">-- Seleziona --</option>
-                    <option value="Fino a 500€">Fino a 500€</option>
-                    <option value="500€ - 1.000€">500€ - 1.000€</option>
-                    <option value="1.000€ - 2.000€">1.000€ - 2.000€</option>
-                    <option value="Oltre 2.000€">Oltre 2.000€</option>
-                    <option value="Flessibile">Flessibile</option>
-                </select>
-            </div>
+                    <div class="form-group">
+                        <label for="interest">Cosa ti Interessa? *</label>
+                        <select id="interest" name="interest" required>
+                            <option value="">-- Seleziona un'opzione --</option>
+                            <option value="Membership Club">💎 Membership Club - Voglio Viaggiare a Prezzi Scontati</option>
+                            <option value="Partnership Program">💼 Partnership Program - Voglio Guadagnare da Partner</option>
+                            <option value="Entrambe">🎯 Entrambe le Opportunità</option>
+                        </select>
+                    </div>
 
-            <div class="form-group">
-                <label for="compagni_viaggio">Con chi viaggi solitamente? <span class="required">*</span></label>
-                <select id="compagni_viaggio" name="compagni_viaggio" required>
-                    <option value="">-- Seleziona --</option>
-                    <option value="Da solo/a">Da solo/a</option>
-                    <option value="In coppia">In coppia</option>
-                    <option value="Con la famiglia">Con la famiglia</option>
-                    <option value="Con amici">Con amici</option>
-                    <option value="Gruppo organizzato">Gruppo organizzato</option>
-                </select>
-            </div>
+                    <div class="form-group">
+                        <label for="destination">Destinazione di Viaggio Preferita</label>
+                        <input type="text" id="destination" name="destination" placeholder="Es: Caraibi, Mediterraneo, Norvegia...">
+                    </div>
 
-            <div class="form-group">
-                <label for="interesse_membership">Cosa ti interessa di più della membership inCruises? <span class="required">*</span></label>
-                <select id="interesse_membership" name="interesse_membership" required>
-                    <option value="">-- Seleziona --</option>
-                    <option value="Risparmiare sui viaggi">Risparmiare sui viaggi</option>
-                    <option value="Accumulo crediti premio">Accumulo crediti premio</option>
-                    <option value="Viaggiare più spesso">Viaggiare più spesso</option>
-                    <option value="Opportunità di business come partner">Opportunità di business come partner</option>
-                    <option value="Tutto quanto sopra">Tutto quanto sopra</option>
-                </select>
-            </div>
+                    <div class="form-group">
+                        <label for="experience">Quante Crociere hai già fatto?</label>
+                        <select id="experience" name="experience">
+                            <option value="">-- Seleziona --</option>
+                            <option value="Nessuna">Nessuna, è la mia prima volta</option>
+                            <option value="1-2">1-2 crociere</option>
+                            <option value="3-5">3-5 crociere</option>
+                            <option value="5+">Più di 5 crociere</option>
+                        </select>
+                    </div>
 
-            <div class="form-group">
-                <label for="quando_viaggiare">Quando vorresti iniziare a viaggiare? <span class="required">*</span></label>
-                <select id="quando_viaggiare" name="quando_viaggiare" required>
-                    <option value="">-- Seleziona --</option>
-                    <option value="Entro 3 mesi">Entro 3 mesi</option>
-                    <option value="3-6 mesi">3-6 mesi</option>
-                    
+                    <div class="form-group">
+                        <label for="message">Domande o Commenti</label>
+                        <textarea id="message" name="message" placeholder="Raccontaci cosa vorresti sapere di più..."></textarea>
+                    </div>
+
+                    <button type="submit" class="submit-button">
