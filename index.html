@@ -189,7 +189,6 @@
             form {
                 padding: 25px;
             }
-            <form id="contactForm" action="https://script.google.com/macros/s/AKfycbzILHczH89MZY4ZQkk3NJBZBTfnST0hrj3ORMWT5uFNly_a9Py-SQMZaGmNUkTeqmnF/dev" method="POST" novalidate>
         }
     </style>
 </head>
@@ -197,7 +196,7 @@
     <div class="hero">
         <h1>🚢 Scopri il Mondo delle Crociere con inCruises</h1>
         <p>Viaggia Risparmiando fino al 50% con la Membership Club Esclusiva</p>
-        <p style="font-size: 1.1em;">✓ Sconto immediato del 17% | ✓ Accumula crediti premio | ✓ Migliaia di destinazioni</p>
+        <p>✓ Sconto immediato del 17% | ✓ Accumula crediti premio | ✓ Migliaia di destinazioni</p>
     </div>
 
     <div class="benefits">
@@ -226,7 +225,7 @@
         <h2>Richiedi Maggiori Informazioni</h2>
         <p class="form-intro">Compila il form per ricevere una consulenza gratuita personalizzata e scoprire come viaggiare risparmiando!</p>
 
-        <form id="contactForm" action="https://script.google.com/macros/s/AKfycbzILHczH89MZY4ZQkk3NJBZBTfnST0hrj3ORMWT5uFNly_a9Py-SQMZaGmNUkTeqmnF/dev" method="POST">
+        <form id="contactForm" action="https://script.google.com/macros/s/AKfycbzILHczH89MZY4ZQkk3NJBZBTfnST0hrj3ORMWT5uFNly_a9Py-SQMZaGmNUkTeqmnF/dev" method="POST" novalidate>
             <div class="form-group">
                 <label for="nome">Nome <span class="required">*</span></label>
                 <input type="text" id="nome" name="nome" required>
@@ -252,11 +251,11 @@
                 <div class="radio-group">
                     <div class="radio-option">
                         <input type="radio" id="crociera_si" name="hai_fatto_crociera" value="Sì" required>
-                        <label for="crociera_si" style="margin-bottom: 0; font-weight: normal;">Sì</label>
+                        <label for="crociera_si">Sì</label>
                     </div>
                     <div class="radio-option">
                         <input type="radio" id="crociera_no" name="hai_fatto_crociera" value="No" required>
-                        <label for="crociera_no" style="margin-bottom: 0; font-weight: normal;">No</label>
+                        <label for="crociera_no">No</label>
                     </div>
                 </div>
             </div>
@@ -278,12 +277,12 @@
                     <option value="">-- Seleziona --</option>
                     <option value="Mediterraneo">Mediterraneo</option>
                     <option value="Caraibi">Caraibi</option>
-                    <option value="Nord Europa">Nord Europa / Fiordi</option>
+                    <option value="Nord Europa / Fiordi">Nord Europa / Fiordi</option>
                     <option value="Medio Oriente">Medio Oriente</option>
                     <option value="Asia">Asia</option>
                     <option value="Americhe">Americhe</option>
                     <option value="Crociere Transatlantiche">Crociere Transatlantiche</option>
-                    <option value="Tutte">Tutte le destinazioni</option>
+                    <option value="Tutte le destinazioni">Tutte le destinazioni</option>
                 </select>
             </div>
 
@@ -318,7 +317,7 @@
                     <option value="Risparmiare sui viaggi">Risparmiare sui viaggi</option>
                     <option value="Accumulo crediti premio">Accumulo crediti premio</option>
                     <option value="Viaggiare più spesso">Viaggiare più spesso</option>
-                    <option value="Opportunità di business">Opportunità di business come partner</option>
+                    <option value="Opportunità di business come partner">Opportunità di business come partner</option>
                     <option value="Tutto quanto sopra">Tutto quanto sopra</option>
                 </select>
             </div>
@@ -329,59 +328,4 @@
                     <option value="">-- Seleziona --</option>
                     <option value="Entro 3 mesi">Entro 3 mesi</option>
                     <option value="3-6 mesi">3-6 mesi</option>
-                    <option value="6-12 mesi">6-12 mesi</option>
-                    <option value="Oltre 12 mesi">Oltre 12 mesi</option>
-                    <option value="Sto solo cercando informazioni">Sto solo cercando informazioni</option>
-                </select>
-            </div>
-
-            <div class="form-group">
-                <label for="note">Note aggiuntive o domande specifiche</label>
-                <textarea id="note" name="note" placeholder="Scrivici qui eventuali domande o richieste particolari..."></textarea>
-            </div>
-
-            <input type="hidden" id="data_richiesta" name="data_richiesta">
-
-            <button type="submit">Invia Richiesta</button>
-        </form>
-    </div>
-
-    <footer>
-        <p>&copy; 2026 inCruises Landing Page | Il Club di Viaggi a Premi più prezioso del mondo</p>
-        <p style="font-size: 0.9em; margin-top: 10px;">I tuoi dati saranno trattati nel rispetto della privacy</p>
-    </footer>
-
-    <script>
-        // Imposta automaticamente la data di richiesta
-        document.getElementById('data_richiesta').value = new Date().toLocaleString('it-IT');
-
-        // Gestione invio form
-        document.getElementById('contactForm').addEventListener('submit', function(e) {
-            e.preventDefault();
-
-            // Raccolta dati dal form
-            const formData = new FormData(this);
-
-            // Invia i dati a Google Sheets tramite Google Apps Script
-            fetch(this.action, {
-                method: 'POST',
-                body: formData
-            })
-            .then(response => response.json())
-            .then(data => {
-                if(data.result === 'success') {
-                    alert('Grazie! La tua richiesta è stata inviata con successo. Sarai contattato presto!');
-                    this.reset();
-                    document.getElementById('data_richiesta').value = new Date().toLocaleString('it-IT');
-                } else {
-                    alert('Errore nell'invio. Riprova o contattaci direttamente.');
-                }
-            })
-            .catch(error => {
-                alert('La tua richiesta è stata registrata! Sarai contattato presto.');
-                console.log('Form data:', Object.fromEntries(formData));
-            });
-        });
-    </script>
-</body>
-</html>
+                    
